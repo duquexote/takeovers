@@ -1,7 +1,40 @@
 "use client";
 
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { BiMessageDetail, BiCalendarCheck, BiCheckCircle, BiBell, BiAlarm, BiChart } from 'react-icons/bi';
+
+// Component for animated dots
+const AnimatedDots = () => {
+  const [dots, setDots] = useState<Array<{id: number, x: number, y: number}>>([]);
+
+  // Generate random positions for decorative dots
+  useEffect(() => {
+    const newDots = Array.from({ length: 40 }).map((_, i) => ({
+      id: i,
+      x: Math.random() * 100,
+      y: Math.random() * 100,
+    }));
+    setDots(newDots);
+  }, []);
+
+  return (
+    <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+      {dots.map((dot) => (
+        <div
+          key={dot.id}
+          className="absolute w-1.5 h-1.5 bg-blue-400 rounded-full opacity-20"
+          style={{
+            left: `${dot.x}%`,
+            top: `${dot.y}%`,
+            animationDelay: `${Math.random() * 5}s`,
+            animation: 'pulse 5s infinite ease-in-out',
+          }}
+        ></div>
+      ))}
+    </div>
+  );
+};
 
 const features = [
   {
