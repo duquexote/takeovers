@@ -21,8 +21,7 @@ export default function HeroSection() {
     { role: 'user', text: 'Normando Barbosa\nnormando@cia.com.br' },
     { role: 'assistant', text: 'Agendamento confirmado, as 10h na quarta-feira (06/04/2025)' },
     { role: 'user', type: 'audio', duration: '11s', isAudio: true },
-    { role: 'assistant', text: 'Entendi, essa duvida é muito comum pelos nossos pacientes.'},
-    { role: 'assistant', text: 'Deixa eu explicar mais sobre ela, para você ficar confortável para a consulta', isLast: true}
+    { role: 'assistant', text: 'Entendi, essa duvida é muito comum pelos nossos pacientes.\nDeixa eu explicar mais sobre ela, para você ficar confortável para a consulta', isLast: true }
   ];
 
   useEffect(() => {
@@ -34,7 +33,7 @@ export default function HeroSection() {
           setTimeout(() => {
             setUserTyping(false);
             setChatState(prev => prev + 1);
-          }, 1000);
+          }, 1500);
         } 
         // Se a próxima mensagem for do assistente, mostrar animação de digitação
         else if (chatMessages[chatState + 1].role === 'assistant') {
@@ -42,7 +41,7 @@ export default function HeroSection() {
           setTimeout(() => {
             setIsTyping(false);
             setChatState(prev => prev + 1);
-          }, 1000);
+          }, 1500);
         } 
         // Se a próxima mensagem for um áudio, mostrar animação de digitação verde primeiro
         else if (chatMessages[chatState + 1].isAudio) {
@@ -50,17 +49,17 @@ export default function HeroSection() {
           setTimeout(() => {
             setAudioTyping(false);
             setChatState(prev => prev + 1);
-          }, 1000);
+          }, 1500);
         } 
         // Outros casos, só avançar
         else {
           setChatState(prev => prev + 1);
         }
       }
-    }, 1000); // Intervalo entre as mensagens
+    }, 2000); // Intervalo entre as mensagens
 
     return () => clearTimeout(timer);
-  }, [chatState]);
+  }, [chatState, chatMessages]);
 
   // Efeito de digitação para a última mensagem
   useEffect(() => {
@@ -68,7 +67,7 @@ export default function HeroSection() {
     if (chatState === chatMessages.length - 1) {
       setIsTyping(true); // Mantém a animação de digitando para a última mensagem
     }
-  }, [chatState]);
+  }, [chatState, chatMessages.length]);
 
   return (
     <section id="hero" className="relative min-h-screen overflow-hidden bg-tech-dark pt-24 pb-20 flex items-center">
@@ -95,6 +94,15 @@ export default function HeroSection() {
             transition={{ duration: 0.5 }}
             className="space-y-8"
           >
+            <div className="relative w-48 h-12 mb-6">
+              <Image
+                src="/cia_logo.svg"
+                alt="CIA Virtual Logo"
+                fill
+                className="object-contain"
+                priority
+              />
+            </div>
             
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight text-white">
               <span className="text-primary">Nunca mais</span> perca um cliente por falta de resposta.
