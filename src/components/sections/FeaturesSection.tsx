@@ -77,7 +77,10 @@ export default function FeaturesSection() {
       <div className="absolute top-0 left-0 w-full h-20 bg-gradient-to-b from-tech-dark to-transparent"></div>
       <div className="absolute bottom-0 left-0 w-full h-20 bg-gradient-to-t from-tech-purple to-transparent"></div>
       
-      {/* Animated dots */}
+      {/* Animated dots element */}
+      <AnimatedDots />
+      
+      {/* Static dots */}
       <div className="absolute top-20 left-20 w-3 h-3 bg-primary/70 rounded-full animate-pulse-light"></div>
       <div className="absolute bottom-40 right-40 w-3 h-3 bg-primary/70 rounded-full animate-pulse-light"></div>
       

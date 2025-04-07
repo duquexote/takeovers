@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { useState } from 'react';
+import Image from 'next/image';
 
 // Dados dos depoimentos
 const testimonials = [
@@ -49,16 +50,19 @@ const testimonials = [
 
 export default function TestimonialsSection() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [imageError, setImageError] = useState(false);
   
   // Lógica para lidar com a navegação do carrossel
   const handleNext = () => {
     setActiveIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
+    setImageError(false); // Resetar o erro ao trocar de depoimento
   };
   
   const handlePrev = () => {
     setActiveIndex((prevIndex) => 
       prevIndex === 0 ? testimonials.length - 1 : prevIndex - 1
     );
+    setImageError(false); // Resetar o erro ao trocar de depoimento
   };
   
   // Renderiza as estrelas com base na avaliação
@@ -119,16 +123,21 @@ export default function TestimonialsSection() {
             >
               <div className="flex flex-col md:flex-row items-center gap-8">
                 <div className="w-full md:w-1/3 flex flex-col items-center">
-                  <div className="w-24 h-24 rounded-full overflow-hidden mb-4 border-2 border-primary">
-                    <img
-                      src={testimonials[activeIndex].image || `https://ui-avatars.com/api/?name=${testimonials[activeIndex].name}&background=random`}
-                      alt={testimonials[activeIndex].name}
-                      className="w-full h-full object-cover"
-                      onError={(e) => {
-                        const target = e.target as HTMLImageElement;
-                        target.src = `https://ui-avatars.com/api/?name=${testimonials[activeIndex].name}&background=random`;
-                      }}
-                    />
+                  <div className="w-24 h-24 rounded-full overflow-hidden mb-4 border-2 border-primary relative">
+                    {imageError ? (
+                      <div className="w-full h-full bg-gray-200 flex items-center justify-center text-gray-500">
+                        {testimonials[activeIndex].name.charAt(0)}
+                      </div>
+                    ) : (
+                      <Image
+                        src={testimonials[activeIndex].image || `/ui-avatars.com/api/?name=${encodeURIComponent(testimonials[activeIndex].name)}&background=random`}
+                        alt={testimonials[activeIndex].name}
+                        className="object-cover"
+                        fill
+                        sizes="96px"
+                        onError={() => setImageError(true)}
+                      />
+                    )}
                   </div>
                   <h3 className="text-xl font-bold text-gray-900">{testimonials[activeIndex].name}</h3>
                   <p className="text-gray-600 mb-2">{testimonials[activeIndex].role}</p>
@@ -167,7 +176,10 @@ export default function TestimonialsSection() {
               {testimonials.map((_, index) => (
                 <button
                   key={index}
-                  onClick={() => setActiveIndex(index)}
+                  onClick={() => {
+                    setActiveIndex(index);
+                    setImageError(false);
+                  }}
                   className={`w-3 h-3 rounded-full transition-all ${
                     index === activeIndex ? 'bg-primary w-6' : 'bg-gray-300'
                   }`}

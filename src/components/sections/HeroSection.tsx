@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { BiMessageDetail, BiShow } from 'react-icons/bi';
 
 export default function HeroSection() {
@@ -11,8 +11,8 @@ export default function HeroSection() {
   const [audioTyping, setAudioTyping] = useState(false);
   const [userTyping, setUserTyping] = useState(false);
 
-  // Sequência de mensagens
-  const chatMessages = [
+  // Sequência de mensagens - usar useMemo para evitar recriação a cada render
+  const chatMessages = useMemo(() => [
     { role: 'assistant', text: 'Olá! Sou o assistente virtual da CIA. Como posso ajudar?' },
     { role: 'user', text: 'Olá! Gostaria de agendar um horário.' },
     { role: 'assistant', text: 'Claro! Temos horários disponíveis às 10h, 14h e 16h. Qual prefere?' },
@@ -22,7 +22,7 @@ export default function HeroSection() {
     { role: 'assistant', text: 'Agendamento confirmado, as 10h na quarta-feira (06/04/2025)' },
     { role: 'user', type: 'audio', duration: '11s', isAudio: true },
     { role: 'assistant', text: 'Entendi, essa duvida é muito comum pelos nossos pacientes.\nDeixa eu explicar mais sobre ela, para você ficar confortável para a consulta', isLast: true }
-  ];
+  ], []);
 
   useEffect(() => {
     const timer = setTimeout(() => {
