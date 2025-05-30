@@ -184,7 +184,7 @@ export default function AnimatedBackground({ variant, className = '', color = 'r
       window.removeEventListener('resize', resizeCanvas);
       cancelAnimationFrame(animationFrameId);
     };
-  }, [variant]);
+  }, [variant, color]);
   
   return (
     <canvas 

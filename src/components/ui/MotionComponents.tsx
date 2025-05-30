@@ -1,7 +1,6 @@
 "use client";
 
 import dynamic from 'next/dynamic';
-import { ComponentType } from 'react';
 
 // Importação dinâmica do framer-motion para reduzir o JavaScript inicial
 // Usando uma abordagem que é compatível com os tipos do TypeScript e otimiza o carregamento

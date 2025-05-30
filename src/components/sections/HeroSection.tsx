@@ -1,8 +1,7 @@
 "use client";
 
-import { useState, useEffect, useMemo, lazy, Suspense } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { BiMessageDetail, BiShow } from 'react-icons/bi';
-import dynamic from 'next/dynamic';
 
 // Importação dos componentes motion otimizados
 import MotionComponents from '../ui/MotionComponents';
