@@ -12,6 +12,19 @@ type CustomScriptStrategy = 'worker';
 // Combinação de todas as estratégias
 type ScriptStrategy = NextScriptStrategy | CustomScriptStrategy;
 
+// Função auxiliar para verificar se a estratégia é 'worker'
+function isWorkerStrategy(strategy: ScriptStrategy): strategy is CustomScriptStrategy {
+  return strategy === 'worker';
+}
+
+// Função auxiliar para converter estratégia personalizada para Next.js
+function convertToNextStrategy(strategy: ScriptStrategy): NextScriptStrategy {
+  if (isWorkerStrategy(strategy)) {
+    return 'lazyOnload';
+  }
+  return strategy;
+}
+
 interface OptimizedScriptProps {
   src?: string;
   id?: string;
@@ -162,7 +175,7 @@ export default function OptimizedScript({
   
   // Para outras estratégias, usa o componente Script do Next.js
   // Convertemos 'worker' para 'lazyOnload' já que o Next.js não suporta 'worker'
-  const nextStrategy: NextScriptStrategy = strategy === 'worker' ? 'lazyOnload' : strategy as NextScriptStrategy;
+  const nextStrategy = convertToNextStrategy(strategy);
   
   return (
     <Script
