@@ -117,13 +117,13 @@ export default function HeroSection() {
             className="space-y-8"
           >
             <div className="relative w-80 h-12 mb-6">
-              <OptimizedImage
-                src="/takeovers_logo.svg"
-                alt="Takeovers Logo"
-                fill
-                className="object-contain"
-                priority
-                sizes="(max-width: 768px) 80vw, 320px"
+              {/* Usando Image diretamente para garantir que a logo seja carregada corretamente */}
+              <img 
+                src="/takeovers_logo.svg" 
+                alt="Takeovers Logo" 
+                className="w-full h-full object-contain" 
+                width={320}
+                height={48}
               />
             </div>
             
