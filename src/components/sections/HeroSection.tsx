@@ -4,8 +4,8 @@ import { useState, useEffect, useMemo, lazy, Suspense } from 'react';
 import { BiMessageDetail, BiShow } from 'react-icons/bi';
 import dynamic from 'next/dynamic';
 
-// Importação dinâmica do framer-motion para reduzir o JavaScript inicial
-const motion = dynamic(() => import('framer-motion').then(mod => ({ default: mod.motion })), { ssr: true });
+// Importação dos componentes motion otimizados
+import MotionComponents from '../ui/MotionComponents';
 
 // Usando nosso componente otimizado de imagem
 import OptimizedImage from '../ui/OptimizedImage';
@@ -111,7 +111,7 @@ export default function HeroSection() {
       
       <div className="container-section relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
-          <motion.div
+          <MotionComponents.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
@@ -137,34 +137,34 @@ export default function HeroSection() {
             </h2>
             
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
-              <motion.a
+              <MotionComponents.a
                 href="#contato"
                 whileHover={{ scale: 1.03 }}
                 className="btn-primary flex items-center justify-center shadow-tech"
               >
                 <BiMessageDetail className="w-5 h-5 mr-2" /> Começar agora
-              </motion.a>
+              </MotionComponents.a>
               
-              <motion.a
+              <MotionComponents.a
                 href="#como-funciona"
                 whileHover={{ scale: 1.03 }}
                 className="bg-tech-gray/70 backdrop-blur-sm text-white border border-gray-700 font-medium py-3 px-6 rounded-lg transition duration-300 hover:border-primary/50 hover:bg-tech-gray flex items-center justify-center"
               >
                 <BiShow className="w-5 h-5 mr-2" /> Ver em funcionamento
-              </motion.a>
+              </MotionComponents.a>
             </div>
             
-            <motion.div
+            <MotionComponents.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.7, duration: 0.5 }}
               className="bg-tech-gray/70 backdrop-blur-sm p-4 rounded-lg border border-gray-700 shadow-tech inline-block"
             >
               <p className="font-bold text-lg text-white">R$0,00 por funcionário. <span className="text-primary">Só você e sua IA.</span></p>
-            </motion.div>
-          </motion.div>
+            </MotionComponents.div>
+          </MotionComponents.div>
           
-          <motion.div
+          <MotionComponents.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
@@ -267,7 +267,7 @@ export default function HeroSection() {
                 </div>
               )}
             </div>
-          </motion.div>
+          </MotionComponents.div>
         </div>
       </div>
     </section>
