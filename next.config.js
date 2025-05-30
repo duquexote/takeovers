@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  // Otimização de imagens
   images: {
     formats: ['image/avif', 'image/webp'],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048],
@@ -13,9 +14,22 @@ const nextConfig = {
       },
     ],
   },
+  // Configurações experimentais
   experimental: {
-    optimizePackageImports: ['framer-motion'],
+    // Otimiza importações de pacotes específicos
+    optimizePackageImports: [
+      'framer-motion',
+      'react-icons',
+      'react-intersection-observer'
+    ],
+    // Otimiza a divisão de código
+    optimizeCss: false, // Desativado temporariamente
+    // Reduz o tamanho do bundle
+    serverMinification: true,
+    // Melhora a compressão
+    serverComponentsExternalPackages: ['sharp'],
   },
+  // Otimizações do compilador
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
   },
@@ -23,11 +37,20 @@ const nextConfig = {
   transpilePackages: [],
   // Configuração para otimizar o carregamento de módulos
   modularizeImports: {
+    // Carrega apenas os ícones específicos utilizados
     'react-icons/?(((\\w*)?/?)*)': {
       transform: 'react-icons/{{ matches.[1] }}/{{member}}',
     },
   },
+  // Otimizações de produção
+  productionBrowserSourceMaps: false, // Desativa source maps em produção
   poweredByHeader: false,
+  // Configuração de compressão
+  compress: true,
+  // Configuração de cache
+  generateEtags: true,
+  // Configuração de otimização
+  optimizeFonts: true,
 };
 
 module.exports = nextConfig;
