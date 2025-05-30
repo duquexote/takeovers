@@ -26,9 +26,9 @@ const nextConfig = {
     optimizeCss: false, // Desativado temporariamente
     // Reduz o tamanho do bundle
     serverMinification: true,
-    // Melhora a compressão
-    serverComponentsExternalPackages: ['sharp'],
   },
+  // Pacotes externos para componentes de servidor
+  serverExternalPackages: ['sharp'],
   // Otimizações do compilador
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
@@ -49,8 +49,6 @@ const nextConfig = {
   compress: true,
   // Configuração de cache
   generateEtags: true,
-  // Configuração de otimização
-  optimizeFonts: true,
 };
 
 module.exports = nextConfig;

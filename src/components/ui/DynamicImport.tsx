@@ -1,10 +1,12 @@
 "use client";
 
-import { ComponentType, lazy, Suspense, useEffect, useState } from 'react';
+import { ComponentType, lazy, Suspense, useEffect, useState, ReactNode } from 'react';
+
+type ComponentImport = { default: ComponentType<unknown> };
 
 interface DynamicImportProps {
-  importFn: () => Promise<{ default: ComponentType<any> }>;
-  fallback?: React.ReactNode;
+  importFn: () => Promise<ComponentImport>;
+  fallback?: ReactNode;
   onLoad?: () => void;
   loadingCondition?: boolean;
   loadingDelay?: number;
@@ -21,7 +23,7 @@ export default function DynamicImport({
   loadingCondition = true,
   loadingDelay = 0
 }: DynamicImportProps) {
-  const [Component, setComponent] = useState<ComponentType<any> | null>(null);
+  const [Component, setComponent] = useState<ComponentType<unknown> | null>(null);
   const [shouldLoad, setShouldLoad] = useState(loadingCondition);
 
   useEffect(() => {
@@ -44,10 +46,10 @@ export default function DynamicImport({
     
     const loadComponent = async () => {
       try {
-        const module = await importFn();
+        const importedComponent = await importFn();
         
         if (isMounted) {
-          setComponent(() => module.default);
+          setComponent(() => importedComponent.default);
           if (onLoad) onLoad();
         }
       } catch (error) {
@@ -82,7 +84,7 @@ export function DynamicImportWithSuspense({
   loadingDelay = 0
 }: DynamicImportProps) {
   const [shouldLoad, setShouldLoad] = useState(loadingCondition);
-  const [LazyComponent, setLazyComponent] = useState<ComponentType<any> | null>(null);
+  const [LazyComponent, setLazyComponent] = useState<ComponentType<unknown> | null>(null);
 
   useEffect(() => {
     if (!loadingCondition) return;
