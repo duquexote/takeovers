@@ -2,12 +2,10 @@
 
 import { useState, useEffect, useMemo } from 'react';
 import { BiMessageDetail, BiShow } from 'react-icons/bi';
+import Image from 'next/image';
 
 // Importação dos componentes motion otimizados
 import MotionComponents from '../ui/MotionComponents';
-
-// Usando nosso componente otimizado de imagem
-import OptimizedImage from '../ui/OptimizedImage';
 
 export default function HeroSection() {
   const [chatState, setChatState] = useState(0);
@@ -117,13 +115,14 @@ export default function HeroSection() {
             className="space-y-8"
           >
             <div className="relative w-80 h-12 mb-6">
-              {/* Usando Image diretamente para garantir que a logo seja carregada corretamente */}
-              <img 
+              {/* Usando Image do Next.js para melhor otimização */}
+              <Image 
                 src="/takeovers_logo.svg" 
                 alt="Takeovers Logo" 
-                className="w-full h-full object-contain" 
+                className="object-contain" 
                 width={320}
                 height={48}
+                priority
               />
             </div>
             
