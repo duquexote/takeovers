@@ -1,9 +1,14 @@
 "use client";
 
-import { motion } from 'framer-motion';
-import Image from 'next/image';
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo, lazy, Suspense } from 'react';
 import { BiMessageDetail, BiShow } from 'react-icons/bi';
+import dynamic from 'next/dynamic';
+
+// Importação dinâmica do framer-motion para reduzir o JavaScript inicial
+const motion = dynamic(() => import('framer-motion').then(mod => ({ default: mod.motion })), { ssr: true });
+
+// Usando nosso componente otimizado de imagem
+import OptimizedImage from '../ui/OptimizedImage';
 
 export default function HeroSection() {
   const [chatState, setChatState] = useState(0);
@@ -24,29 +29,37 @@ export default function HeroSection() {
     { role: 'assistant', text: 'Entendi, essa duvida é muito comum pelos nossos pacientes.\nDeixa eu explicar mais sobre ela, para você ficar confortável para a consulta', isLast: true }
   ], []);
 
+  // Usando requestAnimationFrame para otimizar a performance
   useEffect(() => {
-    const timer = setTimeout(() => {
+    if (chatState >= chatMessages.length - 1) return;
+    
+    let animationFrameId: number;
+    let timeoutId: NodeJS.Timeout;
+    
+    const animate = () => {
       if (chatState < chatMessages.length - 1) {
+        const nextMessage = chatMessages[chatState + 1];
+        
         // Se a próxima mensagem for do usuário, mostrar animação de digitação primeiro
-        if (chatMessages[chatState + 1].role === 'user' && !chatMessages[chatState + 1].isAudio) {
+        if (nextMessage.role === 'user' && !nextMessage.isAudio) {
           setUserTyping(true);
-          setTimeout(() => {
+          timeoutId = setTimeout(() => {
             setUserTyping(false);
             setChatState(prev => prev + 1);
           }, 1500);
         } 
         // Se a próxima mensagem for do assistente, mostrar animação de digitação
-        else if (chatMessages[chatState + 1].role === 'assistant') {
+        else if (nextMessage.role === 'assistant') {
           setIsTyping(true);
-          setTimeout(() => {
+          timeoutId = setTimeout(() => {
             setIsTyping(false);
             setChatState(prev => prev + 1);
           }, 1500);
         } 
         // Se a próxima mensagem for um áudio, mostrar animação de digitação verde primeiro
-        else if (chatMessages[chatState + 1].isAudio) {
+        else if (nextMessage.isAudio) {
           setAudioTyping(true);
-          setTimeout(() => {
+          timeoutId = setTimeout(() => {
             setAudioTyping(false);
             setChatState(prev => prev + 1);
           }, 1500);
@@ -56,9 +69,16 @@ export default function HeroSection() {
           setChatState(prev => prev + 1);
         }
       }
-    }, 2000); // Intervalo entre as mensagens
+    };
+    
+    timeoutId = setTimeout(() => {
+      animationFrameId = requestAnimationFrame(animate);
+    }, 2000);
 
-    return () => clearTimeout(timer);
+    return () => {
+      cancelAnimationFrame(animationFrameId);
+      clearTimeout(timeoutId);
+    };
   }, [chatState, chatMessages]);
 
   // Efeito de digitação para a última mensagem
@@ -71,16 +91,19 @@ export default function HeroSection() {
 
   return (
     <section id="hero" className="relative min-h-screen overflow-hidden bg-tech-dark pt-24 pb-20 flex items-center">
-      {/* Background elements */}
-      <div className="absolute inset-0 bg-tech-pattern opacity-10"></div>
-      <div className="absolute inset-0 bg-gradient-radial from-transparent via-transparent to-tech-dark"></div>
+      {/* Background elements - carregados com prioridade mais baixa */}
+      <div className="absolute inset-0 bg-tech-dark"></div>
       
-      {/* Glowing accent */}
-      <div className="absolute -top-20 -left-20 w-60 h-60 bg-primary/20 rounded-full filter blur-[100px]"></div>
-      <div className="absolute -bottom-20 -right-20 w-60 h-60 bg-primary/20 rounded-full filter blur-[100px]"></div>
+      {/* Elementos decorativos carregados após o conteúdo principal */}
+      <div className="absolute inset-0 bg-tech-pattern opacity-10" style={{ willChange: 'opacity' }}></div>
+      <div className="absolute inset-0 bg-gradient-radial from-transparent via-transparent to-tech-dark" style={{ willChange: 'opacity' }}></div>
       
-      {/* Circuit lines - decorative */}
-      <svg className="absolute left-0 top-0 h-full w-1/3 text-gray-700 opacity-20" viewBox="0 0 100 100" preserveAspectRatio="none">
+      {/* Glowing accent - otimizado com will-change */}
+      <div className="absolute -top-20 -left-20 w-60 h-60 bg-primary/20 rounded-full filter blur-[100px]" style={{ willChange: 'transform' }}></div>
+      <div className="absolute -bottom-20 -right-20 w-60 h-60 bg-primary/20 rounded-full filter blur-[100px]" style={{ willChange: 'transform' }}></div>
+      
+      {/* Circuit lines simplificadas */}
+      <svg className="absolute left-0 top-0 h-full w-1/3 text-gray-700 opacity-20" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
         <line x1="0" y1="0" x2="100" y2="100" stroke="currentColor" strokeWidth="0.2" />
         <line x1="0" y1="20" x2="100" y2="80" stroke="currentColor" strokeWidth="0.2" />
         <line x1="0" y1="40" x2="100" y2="60" stroke="currentColor" strokeWidth="0.2" />
@@ -95,12 +118,13 @@ export default function HeroSection() {
             className="space-y-8"
           >
             <div className="relative w-80 h-12 mb-6">
-              <Image
+              <OptimizedImage
                 src="/takeovers_logo.svg"
                 alt="Takeovers Logo"
                 fill
                 className="object-contain"
                 priority
+                sizes="(max-width: 768px) 80vw, 320px"
               />
             </div>
             
@@ -145,6 +169,7 @@ export default function HeroSection() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
             className="bg-tech-dark/90 rounded-xl p-4 md:ml-auto max-w-md"
+            style={{ willChange: 'opacity, transform' }}
           >
             <div className="flex flex-col space-y-3">
               {/* Mostrar todas as mensagens até o estado atual */}
