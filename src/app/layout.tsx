@@ -5,9 +5,9 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "CIA Virtual | Seu Atendente Inteligente no WhatsApp",
-  description: "CIA Virtual responde, agenda e organiza sua rotina no WhatsApp 24h por dia. Ideal para profissionais que vivem de agenda.",
-  keywords: ["IA", "WhatsApp", "Automação", "Atendimento Virtual", "Agendamento", "Assistente Virtual"],
+  title: "Takeovers | Seu Atendente Inteligente no WhatsApp",
+  description: "Takeovers responde, agenda e organiza sua rotina no WhatsApp 24h por dia.",
+  keywords: ["IA", "WhatsApp", "Automação", "Atendimento Virtual", "Agendamento", "Assistente Virtual", "Takeovers"],
 };
 
 export default function RootLayout({
