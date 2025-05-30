@@ -14,7 +14,6 @@ const nextConfig = {
     ],
   },
   experimental: {
-    optimizeCss: true,
     optimizePackageImports: ['framer-motion'],
   },
   compiler: {
