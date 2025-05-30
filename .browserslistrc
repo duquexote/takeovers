@@ -1,0 +1,20 @@
+# Navegadores modernos apenas - reduz a necessidade de polyfills
+# Isso ajuda a reduzir o tamanho do JavaScript
+
+# Navegadores com mais de 0.5% de participação de mercado global
+> 0.5%
+
+# Últimas 2 versões de cada navegador
+last 2 versions
+
+# Não suporta Internet Explorer
+not ie <= 11
+
+# Apenas navegadores que receberam atualizações nos últimos 24 meses
+not dead
+
+# Navegadores que suportam ES6 (ECMAScript 2015)
+supports es6
+
+# Navegadores que suportam módulos ES
+supports es6-module

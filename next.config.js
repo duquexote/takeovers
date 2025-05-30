@@ -19,6 +19,14 @@ const nextConfig = {
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
   },
+  // Configuração para evitar JavaScript legado em navegadores modernos
+  transpilePackages: [],
+  // Configuração para otimizar o carregamento de módulos
+  modularizeImports: {
+    'react-icons/?(((\\w*)?/?)*)': {
+      transform: 'react-icons/{{ matches.[1] }}/{{member}}',
+    },
+  },
   poweredByHeader: false,
 };
 
