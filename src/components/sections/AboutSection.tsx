@@ -73,7 +73,7 @@ export default function AboutSection() {
             Potencialize seu atendimento com Inteligência Artificial
           </h2>
           <p className="subtitle-section text-gray-200">
-            O CIA Virtual facilita o atendimento de diversos profissionais por todo o Brasil.
+            A Takeovers facilita o atendimento de diversos profissionais por todo o Brasil.
             Trazemos mais produtividade para sua rotina e melhor experiência para seus clientes.
           </p>
         </motion.div>
@@ -87,7 +87,7 @@ export default function AboutSection() {
             className="rounded-2xl overflow-hidden shadow-xl"
           >
             <Image
-              src="/about-mockup.png"
+              src="/atendimento.png"
               alt="CIA Virtual em ação no WhatsApp"
               width={600}
               height={400}
@@ -103,11 +103,11 @@ export default function AboutSection() {
             className="space-y-6"
           >
             <h3 className="text-2xl md:text-3xl font-bold text-white">
-              Simplifique a gestão de sua agenda e economize tempo
+            Mais agilidade, mais fechamento.
             </h3>
             
             <p className="text-gray-200">
-              O CIA Virtual foi desenvolvido para automatizar tarefas repetitivas e liberar seu tempo para o que realmente importa: seu trabalho e seus clientes.
+            Criamos um agente de vendas com IA capaz de aumentar sua taxa de resposta, eliminar furos no atendimento e transformar seu WhatsApp em um canal de conversão automática.
             </p>
             
             <div className="space-y-4">
@@ -117,7 +117,7 @@ export default function AboutSection() {
                   description: "Seu negócio nunca fecha. Atenda clientes mesmo quando estiver ocupado ou fora do horário comercial."
                 },
                 {
-                  title: "Integração com Google Agenda",
+                  title: "Receba as solicitações de agendamento no seu Whatsapp",
                   description: "Sincronização automática de horários disponíveis, agendamentos e cancelamentos."
                 },
                 {
@@ -167,8 +167,8 @@ export default function AboutSection() {
           className="mt-20 p-8 rounded-2xl backdrop-blur-sm bg-white/5 border border-white/10 shadow-lg"
         >
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            <CountUpNumber target={93} suffix="%" label="Taxa de satisfação" />
-            <CountUpNumber target={45} suffix="%" label="Redução de faltas" />
+            <CountUpNumber target={100} suffix="%" label="Taxa de satisfação" />
+            <CountUpNumber target={97} suffix="%" label="Dos leads não percebem que é uma I.A" />
             <CountUpNumber target={24} suffix="/7" label="Disponibilidade" />
             <CountUpNumber target={500} prefix="+" label="Profissionais atendidos" />
           </div>

@@ -13,12 +13,12 @@ export default function HeroSection() {
 
   // Sequência de mensagens - usar useMemo para evitar recriação a cada render
   const chatMessages = useMemo(() => [
-    { role: 'assistant', text: 'Olá! Sou o assistente virtual da CIA. Como posso ajudar?' },
+    { role: 'assistant', text: 'Olá! Sou o assistente virtual da Takeovers. Como posso ajudar?' },
     { role: 'user', text: 'Olá! Gostaria de agendar um horário.' },
     { role: 'assistant', text: 'Claro! Temos horários disponíveis às 10h, 14h e 16h. Qual prefere?' },
     { role: 'user', text: 'Pode ser 10h' },
     { role: 'assistant', text: 'Perfeito, me informe o seu nome e email para concluir o agendamento' },
-    { role: 'user', text: 'Normando Barbosa\nnormando@cia.com.br' },
+    { role: 'user', text: 'Rafael Andrade\nrafael@takeovers.com.br' },
     { role: 'assistant', text: 'Agendamento confirmado, as 10h na quarta-feira (06/04/2025)' },
     { role: 'user', type: 'audio', duration: '11s', isAudio: true },
     { role: 'assistant', text: 'Entendi, essa duvida é muito comum pelos nossos pacientes.\nDeixa eu explicar mais sobre ela, para você ficar confortável para a consulta', isLast: true }
@@ -94,10 +94,10 @@ export default function HeroSection() {
             transition={{ duration: 0.5 }}
             className="space-y-8"
           >
-            <div className="relative w-48 h-12 mb-6">
+            <div className="relative w-80 h-12 mb-6">
               <Image
-                src="/cia_logo.svg"
-                alt="CIA Virtual Logo"
+                src="/takeovers_logo.svg"
+                alt="Takeovers Logo"
                 fill
                 className="object-contain"
                 priority
@@ -109,7 +109,7 @@ export default function HeroSection() {
             </h1>
             
             <h2 className="text-xl md:text-2xl text-gray-300 leading-relaxed">
-              Deixe o CIA Virtual responder, agendar e organizar sua rotina — 24h por dia, direto no seu WhatsApp.
+              Deixe o assistente da Takeovers responder, agendar e organizar sua rotina — 24h por dia, direto no seu WhatsApp.
             </h2>
             
             <div className="flex flex-col sm:flex-row gap-4 pt-4">

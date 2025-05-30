@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from 'framer-motion';
+import AnimatedBackground from '../ui/AnimatedBackground';
 
 const steps = [
   {
@@ -11,7 +12,7 @@ const steps = [
   {
     number: '2',
     title: 'Coleta de informações',
-    description: 'Preencha um breve formulário com dados do seu negócio e seus horários.'
+    description: 'Briefing via formulário simples com dados e tom de voz.'
   },
   {
     number: '3',
@@ -20,19 +21,20 @@ const steps = [
   },
   {
     number: '4',
-    title: 'Configuração final',
-    description: 'Conectamos a IA ao seu WhatsApp e calendário de agendamentos.'
+    title: 'Integrações',
+    description: 'Conectamos seu WhatsApp, CRM e agenda.'
   },
   {
     number: '5',
-    title: 'Pronto para uso',
-    description: 'Em até 48h, você já terá um assistente virtual trabalhando por você.'
+    title: 'Pronto para usar',
+    description: 'Em menos de 48h, você está captando e qualificando leads automaticamente.'
   }
 ];
 
 export default function HowItWorksSection() {
   return (
-    <section id="como-funciona" className="bg-white py-20">
+    <section id="como-funciona" className="bg-gray-900 py-20 relative overflow-hidden">
+      <AnimatedBackground variant="dots" className="opacity-60" color="rgba(0, 180, 216, 0.7)" />
       <div className="container-section">
         <div className="text-center mb-16">
           <motion.h2
@@ -40,7 +42,7 @@ export default function HowItWorksSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="title-section"
+            className="title-section text-white"
           >
             Pronto para funcionar em até 48h.
           </motion.h2>
@@ -57,7 +59,7 @@ export default function HowItWorksSection() {
               className="flex items-start mb-10 relative"
             >
               {index !== steps.length - 1 && (
-                <div className="absolute left-6 top-12 w-0.5 h-full bg-gray-200 -z-10"></div>
+                <div className="absolute left-6 top-12 w-0.5 h-full bg-gray-600 -z-10"></div>
               )}
               
               <div className="bg-primary text-white rounded-full w-12 h-12 flex items-center justify-center text-xl font-bold flex-shrink-0 z-10">
@@ -65,8 +67,8 @@ export default function HowItWorksSection() {
               </div>
               
               <div className="ml-6">
-                <h3 className="text-xl font-bold mb-2">{step.title}</h3>
-                <p className="text-gray-600">{step.description}</p>
+                <h3 className="text-xl font-bold mb-2 text-white">{step.title}</h3>
+                <p className="text-gray-300">{step.description}</p>
               </div>
             </motion.div>
           ))}

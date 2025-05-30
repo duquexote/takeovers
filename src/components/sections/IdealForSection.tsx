@@ -1,26 +1,36 @@
 "use client";
 
 import { motion } from 'framer-motion';
-import { 
-  FaBrain, 
-  FaSpa, 
-  FaDumbbell, 
-  FaChartLine, 
-  FaPaintBrush, 
-  FaTooth, 
-  FaBalanceScale, 
-  FaYinYang 
+import {
+  FaTshirt,           // Loja de Roupas
+  FaUtensils,         // Restaurantes
+  FaPrescriptionBottleAlt, // Farmácias
+  FaBuilding,         // Imobiliárias
+  FaCar,              // Concessionárias
+  FaDumbbell,         // Academias
+  FaChalkboardTeacher,// Escolas
+  FaClinicMedical,    // Clínicas
+  FaShoppingCart,     // Mercados
+  FaCut,              // Salões de Beleza
+  FaLaptop,           // E-commerce
+  FaPlaneDeparture,   // Agência de Viagens
+  FaHeart             // E muito mais
 } from 'react-icons/fa';
 
 const professions = [
-  { name: 'Psicólogos', icon: <FaBrain className="w-8 h-8 text-primary" /> },
-  { name: 'Esteticistas', icon: <FaSpa className="w-8 h-8 text-primary" /> },
-  { name: 'Personal Trainers', icon: <FaDumbbell className="w-8 h-8 text-primary" /> },
-  { name: 'Consultores', icon: <FaChartLine className="w-8 h-8 text-primary" /> },
-  { name: 'Designers', icon: <FaPaintBrush className="w-8 h-8 text-primary" /> },
-  { name: 'Dentistas', icon: <FaTooth className="w-8 h-8 text-primary" /> },
-  { name: 'Advogados', icon: <FaBalanceScale className="w-8 h-8 text-primary" /> },
-  { name: 'Terapeutas', icon: <FaYinYang className="w-8 h-8 text-primary" /> },
+  { name: 'Loja de Roupas', icon: <FaTshirt className="w-8 h-8 text-primary" /> },
+  { name: 'Restaurantes', icon: <FaUtensils className="w-8 h-8 text-primary" /> },
+  { name: 'Farmácias', icon: <FaPrescriptionBottleAlt className="w-8 h-8 text-primary" /> },
+  { name: 'Imobiliárias', icon: <FaBuilding className="w-8 h-8 text-primary" /> },
+  { name: 'Concessionárias', icon: <FaCar className="w-8 h-8 text-primary" /> },
+  { name: 'Academias', icon: <FaDumbbell className="w-8 h-8 text-primary" /> },
+  { name: 'Escolas', icon: <FaChalkboardTeacher className="w-8 h-8 text-primary" /> },
+  { name: 'Clínicas', icon: <FaClinicMedical className="w-8 h-8 text-primary" /> },
+  { name: 'Mercados', icon: <FaShoppingCart className="w-8 h-8 text-primary" /> },
+  { name: 'Salões de beleza', icon: <FaCut className="w-8 h-8 text-primary" /> },
+  { name: 'E-commerce', icon: <FaLaptop className="w-8 h-8 text-primary" /> },
+  { name: 'Agência de Viagens', icon: <FaPlaneDeparture className="w-8 h-8 text-primary" /> },
+  { name: 'E muito mais', icon: <FaHeart className="w-8 h-8 text-primary" /> },
 ];
 
 export default function IdealForSection() {
@@ -39,7 +49,7 @@ export default function IdealForSection() {
             transition={{ duration: 0.5 }}
             className="title-section text-white"
           >
-            Criado para quem vive de agenda.
+            Criado para empresas que vivem de leads.
           </motion.h2>
           
           <div className="w-20 h-1 bg-primary mx-auto mt-6 mb-6"></div>
@@ -51,7 +61,7 @@ export default function IdealForSection() {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="subtitle-section mx-auto text-gray-300"
           >
-            Se você atende por hora, o CIA Virtual pode revolucionar sua rotina.
+            Se seu negócio precisa de atendimento rápido e inteligente para captar, qualificar e vender — Takeovers é para você.
           </motion.p>
         </div>
         

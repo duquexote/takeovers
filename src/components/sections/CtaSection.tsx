@@ -30,7 +30,7 @@ export default function CtaSection() {
           className="text-center max-w-3xl mx-auto space-y-8"
         >
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-white">
-            Chegou a hora de <span className="text-primary">automatizar</span> seu atendimento.
+          Chegou a hora de colocar sua IA <span className="text-primary">para vender.</span>
           </h2>
           
           <div className="w-20 h-1 bg-primary mx-auto"></div>
@@ -44,12 +44,12 @@ export default function CtaSection() {
             className="inline-block"
           >
             <a 
-              href="https://wa.me/5511999999999?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20o%20CIA%20Virtual" 
+              href="https://wa.me/5511999999999?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20a%20IA%20Takeovers" 
               target="_blank"
               rel="noopener noreferrer"
               className="bg-primary text-white text-lg font-bold py-4 px-8 rounded-lg shadow-neon flex items-center justify-center gap-2 transition hover:bg-primaryDark hover:shadow-tech"
             >
-              <BiRocket className="w-5 h-5 animate-pulse-light" /> Quero meu CIA Virtual no WhatsApp
+              <BiRocket className="w-5 h-5 animate-pulse-light" /> Quero meu agente IA no WhatsApp
             </a>
           </motion.div>
           

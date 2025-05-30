@@ -39,32 +39,32 @@ const AnimatedDots = () => {
 const features = [
   {
     title: 'Responde com empatia',
-    description: 'Atendimento humanizado e personalizado para cada cliente.',
+    description: 'Atendimento humanizado com base em sua linguagem.',
     icon: <BiMessageDetail className="w-9 h-9 text-primary" />
   },
   {
-    title: 'Informa horários disponíveis',
-    description: 'Acesso em tempo real à sua agenda para oferecer horários livres.',
+    title: 'Capta informações',
+    description: 'Nome, e-mail, produto de interesse, urgência, cidade etc.',
     icon: <BiCalendarCheck className="w-9 h-9 text-primary" />
   },
   {
-    title: 'Agenda automaticamente',
-    description: 'Marca compromissos diretamente no seu calendário sem intervenção.',
+    title: 'Envia para seu time no WhatsApp',
+    description: 'Tudo formatado para facilitar o fechamento rápido.',
     icon: <BiCheckCircle className="w-9 h-9 text-primary" />
   },
   {
-    title: 'Confirma a consulta',
-    description: 'Envia lembretes e confirma presenças antes dos atendimentos.',
+    title: 'Agenda compromissos automaticamente',
+    description: 'Integra com Google Calendar, Cal.com ou ClickUp.',
     icon: <BiBell className="w-9 h-9 text-primary" />
   },
   {
-    title: 'Envia lembretes',
-    description: 'Notifica clientes sobre compromissos para reduzir faltas.',
+    title: 'Notifica e faz follow-up',
+    description: 'Automatiza lembretes e mensagens de reforço.',
     icon: <BiAlarm className="w-9 h-9 text-primary" />
   },
   {
-    title: 'Organiza sua rotina',
-    description: 'Otimiza seu tempo com uma agenda bem estruturada e sem furos.',
+    title: 'Aprende com seu negócio',
+    description: 'Customização com suas planilhas, PDFs ou vídeo-aulas.',
     icon: <BiChart className="w-9 h-9 text-primary" />
   }
 ];
@@ -93,7 +93,7 @@ export default function FeaturesSection() {
             transition={{ duration: 0.5 }}
             className="title-section text-white"
           >
-            Seu atendimento mais rápido, inteligente e organizado.
+            Seu novo SDR de vendas faz tudo isso:
           </motion.h2>
           
           <div className="w-20 h-1 bg-primary mx-auto mt-6 mb-6"></div>

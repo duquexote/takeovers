@@ -2,12 +2,14 @@
 
 import { motion } from 'framer-motion';
 import { useState } from 'react';
+import AnimatedBackground from '../ui/AnimatedBackground';
 
 export default function PricingSection() {
   const [isAnnual, setIsAnnual] = useState(true);
   
   return (
-    <section id="planos" className="py-24 bg-white relative">
+    <section id="planos" className="py-24 bg-white relative overflow-hidden">
+      <AnimatedBackground variant="grid" className="opacity-40" color="rgba(79, 70, 229, 0.4)" />
       <div className="container-section">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <motion.h2 
@@ -17,7 +19,7 @@ export default function PricingSection() {
             transition={{ duration: 0.5 }}
             className="title-section text-tech-dark"
           >
-            Planos simples para todas as necessidades
+           Escolha o agente ideal para o seu negócio
           </motion.h2>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
@@ -26,7 +28,7 @@ export default function PricingSection() {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="subtitle-section"
           >
-            Escolha o plano ideal para o seu volume de atendimentos
+            Soluções personalizadas para diferentes necessidades de automação
           </motion.p>
           
           <div className="mt-10 flex items-center justify-center">
@@ -43,14 +45,14 @@ export default function PricingSection() {
                 <div className="w-14 h-7 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-primary"></div>
               </div>
               <span className={`ml-3 font-medium ${isAnnual ? 'text-gray-900' : 'text-gray-500'}`}>
-                Anual <span className="text-primary font-bold text-sm">(2 meses grátis)</span>
+                Semestral
               </span>
             </label>
           </div>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {/* Plano Básico */}
+          {/* Agente Atendimento */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -58,13 +60,23 @@ export default function PricingSection() {
             transition={{ duration: 0.5 }}
             className="border border-gray-200 rounded-xl p-8 hover:shadow-lg transition-all duration-300 flex flex-col bg-white"
           >
-            <h3 className="text-xl font-bold text-gray-900 mb-4">Básico</h3>
+            <div className="flex items-center mb-2">
+            <span className="text-primary text-xl mr-2">🔹</span>
+              <h3 className="text-xl font-bold text-gray-900">Agente Atendimento</h3>
+            </div>
+            <p className="text-gray-600 mb-4 text-sm">Ideal para quem quer automatizar dúvidas e interações simples.</p>
+            
             <div className="mb-6 pb-6 border-b border-gray-100">
+              <div className="flex items-center mb-1">
+                <p className="text-sm line-through text-gray-400 mr-2">R$1000,00</p>
+                <span className="bg-green-100 text-green-600 text-xs px-2 py-0.5 rounded">Implementação GRÁTIS</span>
+              </div>
               <p className="text-4xl font-bold text-gray-900">
-                {isAnnual ? 'R$97' : 'R$127'}
+                {isAnnual ? 'R$497' : 'R$697'}
                 <span className="text-base font-normal text-gray-500">/mês</span>
               </p>
-              {isAnnual && <p className="text-gray-500 mt-1">Faturado anualmente</p>}
+              {isAnnual && <p className="text-gray-500 mt-1">Plano Semestral</p>}
+              {!isAnnual && <p className="text-gray-500 mt-1">Plano Mensal</p>}
             </div>
             
             <ul className="space-y-3 mb-8 flex-grow">
@@ -72,42 +84,30 @@ export default function PricingSection() {
                 <svg className="w-5 h-5 text-green-500 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
                 </svg>
-                <span>Até 50 atendimentos por mês</span>
+                <span>Agente de IA para interação via WhatsApp</span>
               </li>
               <li className="flex items-start">
                 <svg className="w-5 h-5 text-green-500 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
                 </svg>
-                <span>Agendamento automático</span>
+                <span>Responde perguntas frequentes</span>
               </li>
               <li className="flex items-start">
                 <svg className="w-5 h-5 text-green-500 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
                 </svg>
-                <span>Confirmação de consultas</span>
+                <span>Envia links e contatos de setores</span>
               </li>
               <li className="flex items-start">
                 <svg className="w-5 h-5 text-green-500 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
                 </svg>
-                <span>Integração Google Agenda</span>
-              </li>
-              <li className="flex items-start text-gray-400">
-                <svg className="w-5 h-5 text-gray-300 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
-                </svg>
-                <span>Personalização de respostas</span>
-              </li>
-              <li className="flex items-start text-gray-400">
-                <svg className="w-5 h-5 text-gray-300 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
-                </svg>
-                <span>Suporte prioritário</span>
+                <span>Oferece suporte técnico básico</span>
               </li>
             </ul>
             
             <a href="#contato" className="btn-secondary text-center">
-              Escolher Plano
+              Garantir Oferta
             </a>
           </motion.div>
           
@@ -123,13 +123,23 @@ export default function PricingSection() {
               <span className="bg-primary text-white text-sm font-medium px-3 py-1 rounded-full shadow-sm">Mais Popular</span>
             </div>
             
-            <h3 className="text-xl font-bold text-gray-900 mb-4">Profissional</h3>
+            <div className="flex items-center mb-2">
+              <span className="text-yellow-500 text-xl mr-2">🟡</span>
+              <h3 className="text-xl font-bold text-gray-900">Agente SDR ou Closer</h3>
+            </div>
+            <p className="text-gray-600 mb-4 text-sm">Foco total em conversão, qualificação e agendamento de vendas.</p>
+            
             <div className="mb-6 pb-6 border-b border-gray-100">
+              <div className="flex items-center mb-1">
+                <p className="text-sm line-through text-gray-400 mr-2">R$1000,00</p>
+                <span className="bg-green-100 text-green-600 text-xs px-2 py-0.5 rounded">Implementação GRÁTIS</span>
+              </div>
               <p className="text-4xl font-bold text-gray-900">
-                {isAnnual ? 'R$197' : 'R$247'}
+                {isAnnual ? 'R$997' : 'R$1197'}
                 <span className="text-base font-normal text-gray-500">/mês</span>
               </p>
-              {isAnnual && <p className="text-gray-500 mt-1">Faturado anualmente</p>}
+              {isAnnual && <p className="text-gray-500 mt-1">Plano Semestral</p>}
+              {!isAnnual && <p className="text-gray-500 mt-1">Plano Mensal</p>}
             </div>
             
             <ul className="space-y-3 mb-8 flex-grow">
@@ -137,46 +147,34 @@ export default function PricingSection() {
                 <svg className="w-5 h-5 text-green-500 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
                 </svg>
-                <span>Até 150 atendimentos por mês</span>
+                <span>Qualificação automática de leads</span>
               </li>
               <li className="flex items-start">
                 <svg className="w-5 h-5 text-green-500 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
                 </svg>
-                <span>Agendamento automático</span>
+                <span>Integração com CRM de vendas</span>
               </li>
               <li className="flex items-start">
                 <svg className="w-5 h-5 text-green-500 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
                 </svg>
-                <span>Confirmação de consultas</span>
+                <span>Agendamento de reuniões e follow-ups</span>
               </li>
               <li className="flex items-start">
                 <svg className="w-5 h-5 text-green-500 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
                 </svg>
-                <span>Integração Google Agenda</span>
-              </li>
-              <li className="flex items-start">
-                <svg className="w-5 h-5 text-green-500 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
-                </svg>
-                <span>Personalização de respostas</span>
-              </li>
-              <li className="flex items-start text-gray-400">
-                <svg className="w-5 h-5 text-gray-300 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
-                </svg>
-                <span>Suporte prioritário</span>
+                <span>Envio de dados formatados para WhatsApp do time comercial</span>
               </li>
             </ul>
             
             <a href="#contato" className="btn-primary text-center">
-              Escolher Plano
+              Garantir Oferta
             </a>
           </motion.div>
           
-          {/* Plano Premium */}
+          {/* Agente Customizado */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -184,13 +182,20 @@ export default function PricingSection() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="border border-gray-200 rounded-xl p-8 hover:shadow-lg transition-all duration-300 flex flex-col bg-white"
           >
-            <h3 className="text-xl font-bold text-gray-900 mb-4">Premium</h3>
+            <div className="flex items-center mb-2">
+              <span className="text-gray-500 text-xl mr-2">🔧️</span>
+              <h3 className="text-xl font-bold text-gray-900">Agente Customizado</h3>
+            </div>
+            <p className="text-gray-600 mb-4 text-sm">Para empresas que precisam de automações específicas.</p>
+            
             <div className="mb-6 pb-6 border-b border-gray-100">
+              <div className="flex items-center mb-1">
+                <span className="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded">Instalação + Treinamento Personalizado</span>
+              </div>
               <p className="text-4xl font-bold text-gray-900">
-                {isAnnual ? 'R$397' : 'R$497'}
-                <span className="text-base font-normal text-gray-500">/mês</span>
+                <span className="text-base font-normal text-gray-500">Valores sob consulta</span>
               </p>
-              {isAnnual && <p className="text-gray-500 mt-1">Faturado anualmente</p>}
+              <p className="text-gray-500 mt-1">💼 Projetos personalizados</p>
             </div>
             
             <ul className="space-y-3 mb-8 flex-grow">
@@ -198,49 +203,37 @@ export default function PricingSection() {
                 <svg className="w-5 h-5 text-green-500 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
                 </svg>
-                <span>Atendimentos ilimitados</span>
+                <span>Projetos com lógica personalizada</span>
               </li>
               <li className="flex items-start">
                 <svg className="w-5 h-5 text-green-500 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
                 </svg>
-                <span>Agendamento automático</span>
+                <span>APIs, ERPs e integrações complexas</span>
               </li>
               <li className="flex items-start">
                 <svg className="w-5 h-5 text-green-500 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
                 </svg>
-                <span>Confirmação de consultas</span>
+                <span>Análise de viabilidade sob demanda</span>
               </li>
               <li className="flex items-start">
                 <svg className="w-5 h-5 text-green-500 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
                 </svg>
-                <span>Integração Google Agenda</span>
-              </li>
-              <li className="flex items-start">
-                <svg className="w-5 h-5 text-green-500 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
-                </svg>
-                <span>Personalização de respostas</span>
-              </li>
-              <li className="flex items-start">
-                <svg className="w-5 h-5 text-green-500 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
-                </svg>
-                <span>Suporte prioritário</span>
+                <span>Suporte técnico e desenvolvimento sob medida</span>
               </li>
             </ul>
             
             <a href="#contato" className="btn-secondary text-center">
-              Escolher Plano
+              Solicitar Orçamento
             </a>
           </motion.div>
         </div>
         
         <div className="mt-16 text-center">
           <p className="text-gray-500">
-            Precisa de um plano personalizado para sua empresa? <a href="#contato" className="text-primary font-medium hover:underline">Entre em contato</a>
+            Todos os planos incluem integração com WhatsApp, coleta de dados automatizada e suporte técnico de onboarding.
           </p>
         </div>
       </div>

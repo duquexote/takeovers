@@ -3,47 +3,48 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import Image from 'next/image';
+import AnimatedBackground from '../ui/AnimatedBackground';
 
 // Dados dos depoimentos
 const testimonials = [
   {
     id: 1,
-    name: 'Dra. Camila Silva',
-    role: 'Psicóloga Clínica',
-    image: '/testimonials/person1.jpg',
-    text: 'O CIA Virtual revolucionou minha agenda. Reduzi as faltas em 60% e hoje consigo me dedicar mais aos atendimentos sem me preocupar com a parte administrativa.',
+    name: 'Ana Beatriz',
+    role: 'Esteticista – Salão de Beleza em SP',
+    image: '/ana-beatriz.jpg',
+    text: 'Antes da IA, eu perdia cliente por não responder a tempo. Agora tudo é automático, não deixo ninguém no vácuo e minha agenda vive cheia.',
     rating: 5
   },
   {
     id: 2,
-    name: 'Dr. Rafael Mendes',
-    role: 'Dentista',
-    image: '/testimonials/person2.jpg',
-    text: 'Meus pacientes adoram a praticidade de agendar pelo WhatsApp a qualquer hora do dia. E eu economizo com secretária. Recomendo para todos os profissionais da área.',
+    name: 'Carlos Mendes',
+    role: 'Corretor – Imobiliária em BH',
+    image: '/carlos-mendes.jpg',
+    text: 'A IA da Takeovers virou meu SDR. Ela coleta dados, agenda visita e me avisa direto no WhatsApp. Fechei 4 contratos só com leads filtrados por ela.',
     rating: 5
   },
   {
     id: 3,
-    name: 'Amanda Torres',
-    role: 'Esteticista',
-    image: '/testimonials/person3.jpg',
-    text: 'Desde que implementei o CIA, minha agenda está sempre cheia e organizada. O sistema é intuitivo e o suporte é excelente quando preciso de ajuda.',
+    name: 'Juliana Prado',
+    role: 'Vendedora – Loja de Roupas Online',
+    image: '/juliana-prado.jpg',
+    text: 'Meu Instagram bomba de mensagens, e a IA virou meu braço direito. Responde, coleta medidas, mostra fotos e manda pra mim quem realmente quer comprar.',
     rating: 5
   },
   {
     id: 4,
-    name: 'João Pereira',
-    role: 'Personal Trainer',
-    image: '/testimonials/person4.jpg',
-    text: 'Antes eu perdia muito tempo respondendo mensagens básicas. Agora o CIA faz isso por mim e meus alunos têm respostas imediatas. Sensacional!',
+    name: 'Diego Ramos',
+    role: 'Sócio – Cursos Profissionalizantes',
+    image: '/diego-ramos.webp',
+    text: 'Ela atende os alunos, envia detalhes do curso e marca reuniões com pais. Aumentei 32% nas matrículas só com esse atendimento automático.',
     rating: 5
   },
   {
     id: 5,
-    name: 'Fernanda Costa',
-    role: 'Nutricionista',
-    image: '/testimonials/person5.jpg',
-    text: 'Adoro a facilidade de integração com meu Google Agenda. Tudo sincronizado em tempo real e nunca mais tive problemas com horários duplicados.',
+    name: 'Fernanda Rocha',
+    role: 'Médica – Clínica Odontológica',
+    image: '/fernanda-rocha.webp',
+    text: 'Nunca mais precisei parar consulta pra atender WhatsApp. A IA responde tudo com empatia, agenda e ainda me manda os dados organizados.',
     rating: 5
   }
 ];
@@ -81,7 +82,11 @@ export default function TestimonialsSection() {
   };
 
   return (
-    <section id="depoimentos" className="py-20 bg-gray-50">
+    <section id="depoimentos" className="py-20 bg-tech-blue relative overflow-hidden">
+      <AnimatedBackground variant="waves" className="opacity-50" color="rgba(99, 102, 241, 0.5)" />
+      <div className="absolute inset-0 bg-cyber-grid bg-[length:30px_30px] opacity-20"></div>
+      <div className="absolute top-0 left-0 w-full h-20 bg-gradient-to-b from-tech-blue to-transparent"></div>
+      <div className="absolute bottom-0 left-0 w-full h-20 bg-gradient-to-t from-tech-blue to-transparent"></div>
       <div className="container-section">
         <div className="text-center mb-16">
           <motion.h2
@@ -89,18 +94,18 @@ export default function TestimonialsSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="title-section"
+            className="title-section text-white"
           >
-            O que nossos clientes estão dizendo
+            Resultados reais de quem usa a Takeovers
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="subtitle-section mx-auto"
+            className="subtitle-section mx-auto text-gray-200"
           >
-            Centenas de profissionais já transformaram seu atendimento
+            Empresas de diversos segmentos transformando leads em vendas
           </motion.p>
         </div>
 

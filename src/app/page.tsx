@@ -9,7 +9,6 @@ import IdealForSection from '@/components/sections/IdealForSection';
 import Navbar from '@/components/Navbar';
 import PricingSection from '@/components/sections/PricingSection';
 import TestimonialsSection from '@/components/sections/TestimonialsSection';
-import TrustSection from '@/components/sections/TrustSection';
 
 export default function Home() {
   return (
@@ -19,7 +18,6 @@ export default function Home() {
       <AboutSection />
       <IdealForSection />
       <FeaturesSection />
-      <TrustSection />
       <HowItWorksSection />
       <PricingSection />
       <TestimonialsSection />

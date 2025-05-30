@@ -52,10 +52,10 @@ export default function Navbar() {
       <div className="container-section !py-0">
         <div className="flex items-center justify-between">
           <Link href="/" className="flex items-center">
-            <div className="relative h-8 w-32">
+            <div className="relative h-8 w-48">
               <Image
-                src="/cia_logo.svg"
-                alt="CIA Virtual Logo"
+                src="/takeovers_logo.svg"
+                alt="Takeovers Logo"
                 fill
                 className="object-contain"
                 priority

@@ -5,28 +5,32 @@ import { useState } from 'react';
 
 const faqs = [
   {
-    question: 'A IA substitui meu atendimento?',
-    answer: 'Não, o CIA Virtual é um assistente que cuida da parte inicial do contato com o cliente, organiza sua agenda e otimiza seu tempo. Você continua responsável pelo atendimento principal, que é o que realmente importa.'
+    question: 'A IA substitui meu time de atendimento?',
+    answer: 'Não. Ela atua como um SDR virtual, automatizando as etapas repetitivas (respostas iniciais, coleta de dados, agendamentos) e liberando tempo do seu time para focar no fechamento.'
   },
   {
-    question: 'Serve para qualquer área?',
-    answer: 'O CIA Virtual é ideal para profissionais que trabalham com agenda e atendimentos por hora. Psicólogos, terapeutas, personal trainers, consultores, dentistas e profissionais similares conseguem os melhores resultados.'
+    question: 'Como recebo os dados coletados pelo agente?',
+    answer: 'Todos os dados são enviados diretamente para o seu WhatsApp, formatados de forma organizada, ou integrados ao seu CRM ou planilha, se preferir.'
   },
   {
     question: 'Precisa de conhecimento técnico?',
     answer: 'Não é necessário nenhum conhecimento técnico. Nossa equipe configura tudo para você e oferece um treinamento completo para que você aproveite ao máximo as funcionalidades.'
   },
   {
-    question: 'E se quiser ajustes no assistente?',
-    answer: 'Se optar pelo plano com manutenção, você tem direito a ajustes mensais. No plano básico, ajustes após o período inicial de 30 dias são cobrados separadamente.'
+    question: 'É possível personalizar as respostas da IA?',
+    answer: 'Sim! A IA é treinada com base nos seus PDFs, vídeos, planilhas ou textos, para responder como se fosse da sua equipe.'
   },
   {
-    question: 'Quanto tempo para implementar?',
-    answer: 'O CIA Virtual estará pronto para funcionar em até 48 horas após a contratação e o preenchimento do formulário com suas informações.'
+    question: 'Preciso de conhecimento técnico para usar?',
+    answer: 'Nenhum. Nossa equipe configura tudo e te entrega o agente pronto para funcionar. Você só precisa acompanhar os leads.'
   },
   {
-    question: 'Como é feita a integração com meu WhatsApp?',
-    answer: 'Utilizamos tecnologias seguras e aprovadas pelo WhatsApp Business para integrar o CIA Virtual. O processo é simples e guiado pela nossa equipe, sem riscos para sua conta.'
+    question: 'Quanto tempo leva pra começar a rodar?',
+    answer: 'Em até 48 horas após o preenchimento do formulário, sua IA já estará funcionando no WhatsApp da sua empresa.'
+  },
+  {
+    question: 'Ela funciona fora do horário comercial?',
+    answer: 'Sim! Ela atende 24h por dia, 7 dias por semana, liberando tempo para você, seu time e sem perder leads.'
   }
 ];
 
@@ -57,7 +61,7 @@ export default function FaqSection() {
           </h2>
           <div className="w-20 h-1 bg-primary mx-auto mt-6 mb-6"></div>
           <p className="text-gray-300 max-w-2xl mx-auto">
-            Veja as respostas para as perguntas mais frequentes sobre o CIA Virtual
+            Veja as respostas para as perguntas mais frequentes sobre a Takeovers.
           </p>
         </motion.div>
         
